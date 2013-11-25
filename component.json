@@ -2,5 +2,5 @@
   "name": "backbone.cache",
   "version": "0.1.0",
   "main": ["./backbone.cache.js"],
-  "dependencies": { "backbone", "underscore" }
+  "dependencies": [ "backbone", "underscore" ]
 }
