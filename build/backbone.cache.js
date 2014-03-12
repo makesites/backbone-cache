@@ -1,4 +1,4 @@
-// @name backbone.cache - 0.1.0 (Wed, 12 Mar 2014 04:59:21 GMT)
+// @name backbone.cache - 0.2.0 (Wed, 12 Mar 2014 07:08:05 GMT)
 // @url http://github.com/makesites/backbone-cache
 
 // @author makesites
@@ -13,17 +13,13 @@
 
 	var Model = Parent.Model.extend({
 
-		options: {
-
-		},
-
 		cache: function( data ){
 			// prerequisites
 			if( typeof localStorage == "undefined" ) return;
 			// currently only two actions are supported (get & set)
-			var name = this.options.cache_key || this.name || this.id || this.cid;
+			var name = this.options.cache_key || this.name || "model";
 			if( data ){
-				if( data[this.idAttribute] ) name = data[this.idAttribute];
+				if( data[this.idAttribute] ) name += "_"+ data[this.idAttribute];
 				return this.store.set(name, JSON.stringify( data ) );
 			} else {
 				var cached = this.store.get(name);
@@ -73,9 +69,12 @@
 				if ( _.isNull(ids) || _.isEmpty(ids) ) return [] ;
 				ids = JSON.parse( ids );
 				// find the data from localStorage
+				var model = new this.model();
+				// model name
+				var mname = model.options.cache_key || model.name || "model";
 				var cached = _.map(ids, function(id, num){
-					var model = self.store.get(id);
-					return ( _.isNull(model) || _.isEmpty(model) ) ? {} :  JSON.parse( model );
+					var mdata = self.store.get( mname +"_"+ id);
+					return ( _.isNull( mdata ) || _.isEmpty( mdata ) ) ? {} :  JSON.parse( mdata );
 				});
 				return cached;
 			}
