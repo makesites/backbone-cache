@@ -2,10 +2,12 @@
 	"name" : "backbone.cache",
 	"version" : "0.2.0",
 	"author": "makesites",
+	"description" : "Uniform data caching for Backbone.js apps",
+	"homepage" : "https://github.com/makesites/backbone-cache",
 	"repository" : "http://github.com/makesites/backbone-cache",
 	"licenses": [
 		{
-			"type": "MIT license",
+			"type": "MIT",
 			"url": "http://www.makesites.org/licenses/MIT"
 		}
 	],

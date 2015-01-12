@@ -1,6 +1,9 @@
 {
-  "name": "backbone.cache",
-  "version": "0.2.0",
-  "main": ["./backbone.cache.js"],
-  "dependencies": [ "backbone", "underscore" ]
+	"name": "backbone.cache",
+	"version": "0.2.0",
+	"main": ["./build/backbone.cache-min.js"],
+	"dependencies": {
+		"backbone": "latest",
+		"underscore": "latest"
+	}
 }
