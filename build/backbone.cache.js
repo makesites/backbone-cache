@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.0 (Mon, 12 Jan 2015 00:53:32 GMT)
+ * Version: 0.3.0 (Sat, 31 Jan 2015 05:41:18 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
@@ -33,8 +33,8 @@
 }(function ( _, Backbone ) {
 
 	//"use strict";
-	// better way to define global scope?
-	var window = window || {};
+	// define global scope
+	window = window || this.window || {};
 	var APP = window.APP || false;
 
 	// support for Backbone APP() view if available...
