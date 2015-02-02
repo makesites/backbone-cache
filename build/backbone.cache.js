@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.0 (Sat, 31 Jan 2015 05:41:18 GMT)
+ * Version: 0.3.0 (Mon, 02 Feb 2015 04:35:50 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
@@ -133,11 +133,13 @@
 	});
 
 //Views may have their html fragments cached (TBA)
-
+/*
 	var View = Parent.View.extend({
 
 
 	});
+*/
+
 
 
 	// If there is a window object, that at least has a document property
@@ -146,7 +148,7 @@
 		// replace contructors in APP or Backbone depending what's available
 		Parent.Model = Model;
 		Parent.Collection = Collection;
-		Parent.View = View;
+		//Parent.View = View;
 		window[Parent] = Parent;
 
 	}
