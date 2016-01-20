@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.0 (Mon, 02 Feb 2015 04:35:50 GMT)
+ * Version: 0.3.3 (Wed, 20 Jan 2016 00:48:16 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
@@ -107,6 +107,7 @@
 				if( data[this.idAttribute] ) name += "_"+ data[this.idAttribute];
 				return this.store.set(name, JSON.stringify( data ) );
 			} else {
+				if( this[this.idAttribute] ) name += "_"+ this[this.idAttribute];
 				var cached = this.store.get(name);
 				return ( _.isNull( cached ) || _.isEmpty( cached ) ) ? {} : JSON.parse( cached );
 			}
