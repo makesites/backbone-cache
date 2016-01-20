@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.3 (Wed, 20 Jan 2016 00:48:16 GMT)
+ * Version: 0.3.4 (Wed, 20 Jan 2016 00:57:16 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
@@ -22,7 +22,7 @@
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		var deps = ['underscore', 'backbone'];
-		define(deps, lib); // give the module a name
+		define('backbone.cache', deps, lib);
 	} else if ( typeof module === "object" && module && typeof module.exports === "object" ){
 		// Expose as module.exports in loaders that implement CommonJS module pattern.
 		module.exports = lib;
