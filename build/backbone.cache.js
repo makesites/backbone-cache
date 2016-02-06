@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.4 (Wed, 20 Jan 2016 00:57:16 GMT)
+ * Version: 0.3.5 (Sat, 06 Feb 2016 10:59:57 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
@@ -98,6 +98,10 @@
 
 	var Model = Parent.Model.extend({
 
+		options: {
+			timestamp: false
+		},
+
 		cache: function( data ){
 			// prerequisites
 			if( typeof localStorage == "undefined" ) return;
@@ -105,11 +109,29 @@
 			var name = this.options.cache_key || this.name || "model";
 			if( data ){
 				if( data[this.idAttribute] ) name += "_"+ data[this.idAttribute];
-				return this.store.set(name, JSON.stringify( data ) );
+				// stringify data
+				data = JSON.stringify( data );
+				if( this.options.timestamp ){
+					// convert data to base64
+					data = btoa( data );
+					// get timestamp
+					var now = Date.now(); // check if milliseconds?
+					data = JSON.stringify({ data: data, timestamp: now });
+				}
+				return this.store.set(name, data);
 			} else {
 				if( this[this.idAttribute] ) name += "_"+ this[this.idAttribute];
 				var cached = this.store.get(name);
-				return ( _.isNull( cached ) || _.isEmpty( cached ) ) ? {} : JSON.parse( cached );
+				// exit now if chached data doesn't exist;
+				if( _.isNull( cached ) || _.isEmpty( cached ) ) return {};
+				// parse data
+				cached = JSON.parse( cached );
+				if( this.options.timestamp ){
+					// convert data from base64
+					cached = atob( cached.data );
+					cached = JSON.parse(cached);
+				}
+				return cached;
 			}
 		},
 
