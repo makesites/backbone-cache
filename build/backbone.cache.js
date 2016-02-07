@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.5 (Sat, 06 Feb 2016 10:59:57 GMT)
+ * Version: 0.3.5 (Sun, 07 Feb 2016 01:36:13 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
@@ -99,7 +99,7 @@
 	var Model = Parent.Model.extend({
 
 		options: {
-			timestamp: false
+			cache_timestamp: false
 		},
 
 		cache: function( data ){
@@ -111,7 +111,7 @@
 				if( data[this.idAttribute] ) name += "_"+ data[this.idAttribute];
 				// stringify data
 				data = JSON.stringify( data );
-				if( this.options.timestamp ){
+				if( this.options.cache_timestamp ){
 					// convert data to base64
 					data = btoa( data );
 					// get timestamp
@@ -126,7 +126,7 @@
 				if( _.isNull( cached ) || _.isEmpty( cached ) ) return {};
 				// parse data
 				cached = JSON.parse( cached );
-				if( this.options.timestamp ){
+				if( this.options.cache_timestamp ){
 					// convert data from base64
 					cached = atob( cached.data );
 					cached = JSON.parse(cached);
