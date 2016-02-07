@@ -4,7 +4,7 @@
  * @name backbone.cache
  * Uniform data caching for Backbone.js apps
  *
- * Version: 0.3.5 (Sun, 07 Feb 2016 01:36:13 GMT)
+ * Version: 0.3.5 (Sun, 07 Feb 2016 01:41:48 GMT)
  * Source: http://github.com/makesites/backbone-cache
  *
  * @author makesites
