@@ -95,10 +95,13 @@ function minify(srcPath, distPath) {
 		comments : /@name|@author|@cc_on|@url|@license/
 	} });
 
+	// minified text
+	fs.writeFileSync(distPath, min.code, FILE_ENCODING);
+
 	// gzip
 	zlib.gzip(min.code, function (error, result) {
 		if (error) throw error;
-		fs.writeFileSync(distPath, result, FILE_ENCODING);
+		fs.writeFileSync(distPath +".gz", result, FILE_ENCODING);
 		console.log(' '+ distPath +' built.');
 	});
 
